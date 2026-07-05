@@ -1,0 +1,23 @@
+class Solution {
+    public int minimumRecolors(String blocks, int k) {
+        int howManyWhites=0;
+        for(int i=0;i<k;i++){
+            if(blocks.charAt(i)=='W'){
+                howManyWhites++;
+            }
+        }
+        int minWhites=howManyWhites;
+        int end=k,start=1;
+        while(end<blocks.length()){
+            if(blocks.charAt(start-1)=='W'){
+                howManyWhites-=1;
+            }if(blocks.charAt(end)=='W'){
+                howManyWhites+=1;
+            }
+            minWhites=Math.min(minWhites,howManyWhites);
+            start++;
+            end++;
+        }
+        return minWhites;
+    }
+}
